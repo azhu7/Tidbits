@@ -1,3 +1,5 @@
 .idea/modules.xml
 .idea/*.iml
 .idea/**/workspace.xml
+
+project/__pycache__/

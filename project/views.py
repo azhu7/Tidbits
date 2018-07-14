@@ -1,6 +1,6 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, redirect, url_for
 
-from project.app import app
+from project.app import app, freezer
 from project.forms import QueryForm
 
 
@@ -8,12 +8,10 @@ from project.forms import QueryForm
 def home():
     form = QueryForm()
     if form.validate_on_submit():
-        response = form.query.data
-        return redirect(url_for('.results', response=response))
+        return redirect(url_for('.results', query_result=form.query.data))
     return render_template('index.html', title='Search', form=form)
 
 
-@app.route('/results')
-def results():
-    response = request.args['response']
-    return render_template('results.html', response=response)
+@app.route('/results/<string:query_result>')
+def results(query_result):
+    return render_template('results.html', query_result=query_result)

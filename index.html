@@ -1,46 +1,36 @@
 <!doctype html>
-<head>
-  <meta charset="utf-8">
-  <title>Your Site</title>
-  <link rel="stylesheet" href="/Tidbits/static/css/style.css">
-  
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tidbits</title>
+        <link rel="stylesheet" href="/Tidbits/static/css/style.css">
+        
+    </head>
+    <body>
+        <!-- Begin navigation bar. -->
+        <div>
+            Tidbits:
+            <a href="/Tidbits/">Home</a>
+            <a href="https://github.com/azhu7/Tidbits">Source</a>
+        </div>
+        <!-- End navigation bar. -->
+        <hr>
+        <h1>Search</h1>
+        
 
-</head>
-<body class="box">
+<div>
+    <form action="" method="post" novalidate>
+        <input id="csrf_token" name="csrf_token" type="hidden" value="IjYxMmRlYjcxZjkxZDNjNWRkODFjNDViOTRhODFmMTNlZGRiZmM0YTYi.Div0JQ.EzsN6BTAa22wS6RpXBf0piUO1Qo">
+        <p>
+            <label for="query">Query</label><br>
+            <input id="query" name="query" required size="32" type="text" value="">
+        </p>
+        <p><input id="submit" name="submit" type="submit" value="Search"></p>
+    </form>
+</div>
 
-<nav class="nav-menu">
-    <ul>
-        <li><a href="/Tidbits/">Home</a></li>
-        <li><a href="https://github.com/sloria/flask-ghpages-example">Source</a></li>
-    </ul>
-</nav>
 
-<div class="container">
 
-  <div class="content" role="main">
-    
-
-<h2>Posts</h2>
-
-<ul class="page-list">
-  
-      <li><a href="/Tidbits/samuel/">
-          Samuel Ipsum [NSFW]
-      </a>- 2013-07-15 15:30:00</li>
-  
-      <li><a href="/Tidbits/lebowski/">
-          Lebowski Ipsum
-      </a>- 2013-07-15 12:00:00</li>
-  
-      <li><a href="/Tidbits/bacon/">
-          Bacon Ipsum
-      </a>- 2013-07-14 12:00:00</li>
-  
-</ul>
-
-  </div>
-
-</div><!-- end container -->
-<script src="/Tidbits/static/js/script.js"></script>
-</body>
+    <script src="/Tidbits/static/js/script.js"></script>
+    </body>
 </html>
