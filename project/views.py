@@ -1,20 +1,19 @@
-from flask import render_template
+from flask import render_template, flash, redirect, url_for, request
 
-from project.app import app, pages
+from project.app import app
+from project.forms import QueryForm
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    posts = [page for page in pages if 'date' in page.meta]
-    # Sort pages by date
-    sorted_posts = sorted(posts, reverse=True,
-        key=lambda page: page.meta['date'])
-    return render_template('index.html', pages=sorted_posts)
+    form = QueryForm()
+    if form.validate_on_submit():
+        response = form.query.data
+        return redirect(url_for('.results', response=response))
+    return render_template('index.html', title='Search', form=form)
 
 
-@app.route('/<path:path>/')
-def page(path):
-    # `path` is the filename of a page, without the file extension
-    # e.g. "first-post"
-    page = pages.get_or_404(path)
-    return render_template('page.html', page=page)
+@app.route('/results')
+def results():
+    response = request.args['response']
+    return render_template('results.html', response=response)

@@ -1,27 +1,32 @@
 <!doctype html>
-<head>
-  <meta charset="utf-8">
-  <title>{% block page_title %}Your Site{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  {% block css %}{% endblock %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tidbits</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        <!-- Begin navigation bar. -->
+        <div>
+            Tidbits:
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="https://github.com/azhu7/Tidbits">Source</a>
+        </div>
+        <!-- End navigation bar. -->
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <h1>{{ title }}</h1>
+        {% block content %}{% endblock %}
 
-</head>
-<body class="box">
-
-<nav class="nav-menu">
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="https://github.com/sloria/flask-ghpages-example">Source</a></li>
-    </ul>
-</nav>
-
-<div class="{% block content_class %}container{% endblock content_class %}">
-
-  <div class="content" role="main">
-    {% block content %}{% endblock %}
-  </div>
-
-</div><!-- end container -->
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
 </html>
