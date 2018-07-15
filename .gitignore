@@ -3,3 +3,8 @@
 .idea/**/workspace.xml
 
 project/__pycache__/
+**.pyc
+lib/
+
+# GCP
+google-cloud-sdk/
