@@ -1,4 +1,4 @@
-from flask import render_template, redirect, session, url_for
+from flask import redirect, render_template , session, url_for
 
 from project.app import app
 from project.forms import QueryForm
