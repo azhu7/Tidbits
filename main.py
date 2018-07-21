@@ -25,10 +25,11 @@ def init_logging(config_path='logging.json', default_level=logging.INFO):
 
 
 def main():
+    """Runs initialization and server."""
     init_logging()
     logging.info('Starting app.')
     app.run(host='0.0.0.0', port=_PORT)
 
 
 if __name__ == '__main__':
-   main()
+    main()
