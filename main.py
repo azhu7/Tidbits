@@ -1,27 +1,35 @@
-from project.app import app
-from project.views import *  # Ensure all routes are registered before app.run.
+#!/usr/bin/python2
+"""Main. Run this file to start the server."""
 
-import os
-import logging
-from logging import config
 import json
+import logging.config
+import os
 
-LOG_DIR = '.logs/'
-if not os.path.exists(LOG_DIR):
-    os.makedirs(LOG_DIR)
+from project.app import app
+import project.views  # Make sure Flask loads all endpoints. pylint: disable=unused-import
+
+_PORT = int(os.environ.get('PORT', 5000))
+_LOG_DIR = '.logs/'
+if not os.path.exists(_LOG_DIR):
+    os.makedirs(_LOG_DIR)  # Must create dir as it is used in logging.json.
 
 
 def init_logging(config_path='logging.json', default_level=logging.INFO):
+    """Loads the logging config if present or uses default settings."""
     if os.path.exists(config_path):
-        with open(config_path, 'rt') as f:
-            config = json.load(f)
+        with open(config_path, 'rt') as config_file:
+            config = json.load(config_file)
         logging.config.dictConfig(config)
     else:
         logging.basicConfig(level=default_level)
 
 
-if __name__ == '__main__':
+def main():
+    """Runs initialization and server."""
     init_logging()
-    port = int(os.environ.get('PORT', 5000))
     logging.info('Starting app.')
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=_PORT)
+
+
+if __name__ == '__main__':
+    main()
