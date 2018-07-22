@@ -5,6 +5,7 @@
 project/__pycache__/
 **.pyc
 lib/
+.logs/
 
 # GCP
 google-cloud-sdk/
