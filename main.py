@@ -19,9 +19,9 @@ def init_logging(default_level=logging.INFO):
     else:
         # App is running in dev environment.
         config_path = 'logging_dev.json'
-        _LOG_DIR = '.logs/'
-        if not os.path.exists(_LOG_DIR):
-            os.makedirs(_LOG_DIR)  # Must create dir as it is used in logging.json.
+        log_dir = '.logs/'
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)  # Must create dir as it is used in logging.json.
 
     if os.path.exists(config_path):
         with open(config_path, 'rt') as config_file:
