@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python2
 """Main. Run this file to start the server."""
 
 import json
