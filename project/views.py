@@ -1,3 +1,4 @@
+
 """Views for Tidbits."""
 
 import logging
