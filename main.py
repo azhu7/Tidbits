@@ -5,7 +5,7 @@ import json
 import logging.config
 import os
 
-from project.app import app
+from project.app import app as application  # gunicorn looks for 'application'.
 import project.views  # Make sure Flask loads all endpoints. pylint: disable=unused-import
 
 _PORT = int(os.environ.get('PORT', 5000))
@@ -36,7 +36,7 @@ def main():
     """Runs initialization and server."""
     init_logging()
     logging.info('Starting app.')
-    app.run(host='0.0.0.0', port=_PORT)
+    application.run(host='0.0.0.0', port=_PORT)
 
 
 if __name__ == '__main__':
