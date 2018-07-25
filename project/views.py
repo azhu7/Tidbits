@@ -1,6 +1,7 @@
 """Views for Tidbits."""
 
 import logging
+import tweepy
 
 from flask import redirect, render_template, session, url_for
 
@@ -11,6 +12,16 @@ from project.forms import QueryForm
 @app.route('/', methods=['GET', 'POST'])
 def home():
     """Home page."""
+
+    # auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    # auth.set_access_token(access_token, access_token_secret)
+    #
+    # api = tweepy.API(auth)
+    #
+    # public_tweets = api.home_timeline()
+    # for tweet in public_tweets:
+    #     print tweet.text
+
     form = QueryForm()
     if form.validate_on_submit():
         session['query_result'] = form.query.data
