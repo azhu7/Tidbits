@@ -7,14 +7,16 @@ from flask import redirect, render_template, session, url_for
 
 from project.app import app
 from project.forms import QueryForm
+import project.api_config
 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     """Home page."""
-
-    # auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    # auth.set_access_token(access_token, access_token_secret)
+    # twitter_config = project.api_config.TWITTER_CONFIG
+    # print twitter_config['consumer_key']
+    # auth = tweepy.OAuthHandler(twitter_config['consumer_key'], twitter_config['consumer_secret'])
+    # auth.set_access_token(twitter_config['access_token'], twitter_config['access_token_secret'])
     #
     # api = tweepy.API(auth)
     #
