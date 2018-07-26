@@ -7,7 +7,7 @@ from flask import redirect, render_template, session, url_for
 
 from project.app import app
 from project.forms import QueryForm
-import project.api_config
+import project.api_config # if error, read the docstring in api_config_example
 
 
 @app.route('/', methods=['GET', 'POST'])

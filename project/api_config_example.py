@@ -1,5 +1,5 @@
 """Personal API keys for Flask app
-Rename this file to api_config in actual use"""
+Rename this file to api_config.py in actual use"""
 
 
 TWITTER_CONFIG = {
