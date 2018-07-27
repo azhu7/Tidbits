@@ -13,16 +13,19 @@ import project.api_config # if error, read the docstring in api_config_example
 @app.route('/', methods=['GET', 'POST'])
 def home():
     """Home page."""
-    # twitter_config = project.api_config.TWITTER_CONFIG
-    # print twitter_config['consumer_key']
-    # auth = tweepy.OAuthHandler(twitter_config['consumer_key'], twitter_config['consumer_secret'])
-    # auth.set_access_token(twitter_config['access_token'], twitter_config['access_token_secret'])
-    #
-    # api = tweepy.API(auth)
-    #
-    # public_tweets = api.home_timeline()
-    # for tweet in public_tweets:
-    #     print tweet.text
+    twitter_config = project.api_config.TWITTER_CONFIG
+    try:
+        auth = tweepy.OAuthHandler(twitter_config['consumer_key'], twitter_config['consumer_secret'])
+        auth.set_access_token(twitter_config['access_token'], twitter_config['access_token_secret'])
+
+        api = tweepy.API(auth)
+    except:
+        print "Authentification failed"
+    search = api.search(q='hitler', lang='en', count='100', tweet_mode='extended')
+    for item in search:
+        print item.full_text
+        print item.display_text_range
+        print "--------------"
 
     form = QueryForm()
     if form.validate_on_submit():
