@@ -1,6 +1,7 @@
 .idea/modules.xml
 .idea/*.iml
 .idea/**/workspace.xml
+.idea/codeStyles
 
 project/__pycache__/
 **.pyc
