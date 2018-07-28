@@ -9,6 +9,7 @@ project/__pycache__/
 **.pyc
 lib/
 .logs/
+project/env_var_scripts/
 
 # GCP
 google-cloud-sdk/
