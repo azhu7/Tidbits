@@ -6,6 +6,8 @@ import os
 class Config(object):  # pylint: disable=too-few-public-methods
     """Default Flask configuration."""
     DEBUG = True
+
+    # Token for CSRF protection.
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'test-key'
 
     # Load API keys. Value is None if environment variable is not set.
