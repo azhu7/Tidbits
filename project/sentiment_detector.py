@@ -1,9 +1,9 @@
-"""Sentiment detector for Tidbits:
+"""Sentiment detector for Tidbits.
 Utilizes the Google Cloud Platform Natural Language Processing API.
 """
 from collections import namedtuple
 
-"""tuple containing sentiment score (pos/neg/neutral rating) and magnitude,
+"""Tuple containing sentiment score (pos/neg/neutral rating) and magnitude,
 as defined by the GCP NLP API.
 """
 SentimentScore = namedtuple('SentimentScore', ['score', 'magnitude'])
