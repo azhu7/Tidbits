@@ -5,4 +5,3 @@ Werkzeug>=0.9.1
 itsdangerous>=0.22
 wtforms
 flask_wtf
-nltk>=3.0
