@@ -12,7 +12,7 @@ _PORT = int(os.environ.get('PORT', 5000))
 
 # gunicorn looks for 'application' to run.
 application = project.create_app(Config)  # pylint: disable=invalid-name
-
+logging.info('Starting app.') #move logging.info outside so that it could be run when ran by gunicon since __name__ would be server not main
 
 def init_logging(default_level=logging.INFO):
     """Loads the logging config if present or uses default settings."""
