@@ -1,8 +1,7 @@
 """Query class."""
 
+import os
 import tweepy
-import project.api_config # if error, read the docstring in api_config_example
-
 
 class Query(object): # pylint: disable=too-few-public-methods
     """Class to query multiple API's."""
@@ -10,11 +9,14 @@ class Query(object): # pylint: disable=too-few-public-methods
         # Authenticates multiple API's
 
         # Twitter authentification process
-        twitter_config = project.api_config.TWITTER_CONFIG
-        twitter_auth = tweepy.OAuthHandler(twitter_config['consumer_key'],
-                                           twitter_config['consumer_secret'])
-        twitter_auth.set_access_token(twitter_config['access_token'],
-                                      twitter_config['access_token_secret'])
+        twit_consumer_key = os.environ.get('TWITTER_CONSUMER_KEY')
+        twit_consumer_secret = os.environ.get('TWITTER_CONSUMER_SECRET')
+        twit_access_token = os.environ.get('TWITTER_ACCESS_TOKEN')
+        twit_access_token_secret = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
+        twitter_auth = tweepy.OAuthHandler(twit_consumer_key,
+                                           twit_consumer_secret)
+        twitter_auth.set_access_token(twit_access_token,
+                                      twit_access_token_secret)
         self.twitter_api = tweepy.API(twitter_auth)
 
 

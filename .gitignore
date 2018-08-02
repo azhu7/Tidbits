@@ -1,12 +1,13 @@
 .idea/modules.xml
 .idea/*.iml
 .idea/**/workspace.xml
+set_*
+yapf.sh*
 
 project/__pycache__/
 **.pyc
 lib/
 .logs/
-project/api_config.*
 
 # GCP
 google-cloud-sdk/
