@@ -1,14 +1,17 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 """Main. Run this file to start the server."""
 
 import json
 import logging.config
 import os
 
-from project.app import app as application  # gunicorn looks for 'application'.
-import project.views  # Make sure Flask loads all endpoints. pylint: disable=unused-import
+import project
+from project.config import Config
 
 _PORT = int(os.environ.get('PORT', 5000))
+
+# gunicorn looks for 'application' to run.
+application = project.create_app(Config)  # pylint: disable=invalid-name
 
 
 def init_logging(default_level=logging.INFO):
@@ -21,7 +24,8 @@ def init_logging(default_level=logging.INFO):
         config_path = 'logging_dev.json'
         log_dir = '.logs/'
         if not os.path.exists(log_dir):
-            os.makedirs(log_dir)  # Must create dir as it is used in logging.json.
+            # Must create directory as it is used in logging.json.
+            os.makedirs(log_dir)
 
     if os.path.exists(config_path):
         with open(config_path, 'rt') as config_file:
@@ -33,7 +37,9 @@ def init_logging(default_level=logging.INFO):
 
 
 def main():
-    """Runs initialization and server."""
+    """This is only used when running locally. When running live, gunicorn runs
+    the application.
+    """
     init_logging()
     logging.info('Starting app.')
     application.run(host='0.0.0.0', port=_PORT)
