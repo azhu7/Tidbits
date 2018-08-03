@@ -20,11 +20,12 @@ class Query(object): # pylint: disable=too-few-public-methods
         self.twitter_api = tweepy.API(twitter_auth)
 
 
-    def twitter_search(self, query):
-        """ Given a query, returns a list of tweet messages
-        returned from the Twitter API
+    def twitter_search(self, query, num=100):
+        """ Given a query and optional number of tweets to return,
+        returns a list of tweet messages
+        received from the Twitter API
         """
-        search = self.twitter_api.search(q=query, lang='en', count='100',
+        search = self.twitter_api.search(q=query, lang='en', count=str(num),
                                          tweet_mode='extended')
         tweet_messages = []
         for item in search:
