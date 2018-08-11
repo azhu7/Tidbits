@@ -35,11 +35,12 @@ class Config(object):  # pylint: disable=too-few-public-methods
         :param key: String key
         :return String value. NOT_SET_ if key was not found.
         """
-        value = self.client.get(self.client.key(self.entity_kind, key)).get('value')
-        if value is None:
+        entity = self.client.get(self.client.key(self.entity_kind, key))
+        if entity is None:
             logging.warning('Key {%s} is not set.' % key)
-            value = NOT_SET_
-        return value
+            return NOT_SET_
+        else:
+            return entity.get('value')
 
     def __str__(self):
         return 'Not Implemented'
