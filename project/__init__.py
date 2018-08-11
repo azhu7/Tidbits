@@ -17,12 +17,9 @@ def create_app(config):
     def home():  # pylint: disable=unused-variable
         """Home page."""
         form = QueryForm()
-        query_class = Query()
         if form.validate_on_submit():
             session['query_result'] = form.query.data
             logging.debug('User queried:|%s|', session['query_result'])
-            logging.debug('%s',
-                          query_class.query(session['query_result'])['twitter'])
             return redirect(url_for('.results'))
         return render_template('index.html', title='Search', form=form)
 
