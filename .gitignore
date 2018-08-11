@@ -4,12 +4,14 @@
 .idea/**/workspace.xml
 .idea/codeStyles
 
+
 # Project
 project/__pycache__/
 **.pyc
 lib/
 .logs/
 yapf.sh
+.DS_Store
 
 # GCP
 google-cloud-sdk/

@@ -7,3 +7,4 @@ itsdangerous>=0.22
 wtforms
 flask_wtf
 google-cloud-datastore
+tweepy

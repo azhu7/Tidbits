@@ -3,8 +3,8 @@
 import logging
 
 from flask import Flask, redirect, render_template, session, url_for
-from flask import current_app
 from project.forms import QueryForm
+from project.query import Query
 
 
 def create_app(config):
@@ -16,7 +16,6 @@ def create_app(config):
     def home():  # pylint: disable=unused-variable
         """Home page."""
         form = QueryForm()
-        logging.info(current_app.config['SECRET_KEY'])
         if form.validate_on_submit():
             session['query_result'] = form.query.data
             logging.debug('User queried:|%s|', session['query_result'])
