@@ -3,8 +3,10 @@
 import tweepy
 from flask import current_app as app
 
+
 class Query(object):  # pylint: disable=too-few-public-methods
     """Class to query multiple API's."""
+
     def __init__(self):
         # Authenticates multiple API's
 
@@ -15,15 +17,13 @@ class Query(object):  # pylint: disable=too-few-public-methods
                                       app.config['TWIT_ACCESS_TOKEN_SECRET'])
         self.twitter_api = tweepy.API(twitter_auth)
 
-
     def twitter_search(self, query, num=100):
         """Given a query and optional number of tweets to return,
         returns a list of tweet messages received from the Twitter API.
         """
-        search = self.twitter_api.search(q=query, lang='en', count=str(num),
-                                         tweet_mode='extended')
+        search = self.twitter_api.search(
+            q=query, lang='en', count=str(num), tweet_mode='extended')
         return [item.full_text for item in search]
-
 
     def query(self, query):
         """Given a query, accesses multiple API's with that query and returns
