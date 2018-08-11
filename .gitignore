@@ -2,13 +2,17 @@
 .idea/modules.xml
 .idea/*.iml
 .idea/**/workspace.xml
+set_*
+yapf.sh*
 .idea/codeStyles
+
 
 # Project
 project/__pycache__/
 **.pyc
 lib/
 .logs/
+.DS_Store
 
 # GCP
 google-cloud-sdk/
