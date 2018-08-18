@@ -2,7 +2,6 @@
 Utilizes the Google Cloud Platform Natural Language Processing API.
 """
 from collections import namedtuple
-
 """Tuple containing sentiment score (pos/neg/neutral rating) and magnitude,
 as defined by the GCP NLP API.
 """

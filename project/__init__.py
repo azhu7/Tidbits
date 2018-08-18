@@ -3,7 +3,6 @@
 import logging
 
 from flask import Flask, redirect, render_template, session, url_for
-
 from project.forms import QueryForm
 from project.query import Query
 
