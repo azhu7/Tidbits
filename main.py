@@ -10,9 +10,6 @@ from project.config import Config
 
 _PORT = int(os.environ.get('PORT', 5000))
 
-# gunicorn looks for 'application' to run.
-application = project.create_app(Config)  # pylint: disable=invalid-name
-
 
 def init_logging(default_level=logging.INFO):
     """Loads the logging config if present or uses default settings."""
@@ -35,13 +32,17 @@ def init_logging(default_level=logging.INFO):
         logging.basicConfig(level=default_level)
     logging.info('Successfully initialized logger.')
 
+#move everything down so init_loggin is defined
+init_logging()#start logging bfore creating the application so that __init__.py log will stay in logging_dev/loggin_prod
+logging.info('Starting app.')
+
+# gunicorn looks for 'application' to run.
+application = project.create_app(Config)  # pylint: disable=invalid-name
 
 def main():
     """This is only used when running locally. When running live, gunicorn runs
     the application.
     """
-    init_logging()
-    logging.info('Starting app.')
     application.run(host='0.0.0.0', port=_PORT)
 
 
