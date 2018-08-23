@@ -32,7 +32,7 @@ def init_logging(default_level=logging.INFO):
         logging.basicConfig(level=default_level)
     logging.info('Successfully initialized logger.')
 
-#Start logging bfore creating the application so that __init__.py log will stay in logging_dev/loggin_prod.
+# Start logging before creating the application so that __init__.py will log to logging_dev/logging_prod.
 init_logging()
 logging.info('Starting app.')
 
