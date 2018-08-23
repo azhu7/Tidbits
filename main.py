@@ -32,8 +32,7 @@ def init_logging(default_level=logging.INFO):
         logging.basicConfig(level=default_level)
     logging.info('Successfully initialized logger.')
 
-#move everything down so init_loggin is defined
-init_logging()#start logging bfore creating the application so that __init__.py log will stay in logging_dev/loggin_prod
+init_logging()#Start logging bfore creating the application so that __init__.py log will stay in logging_dev/loggin_prod.
 logging.info('Starting app.')
 
 # gunicorn looks for 'application' to run.
