@@ -1,7 +1,6 @@
 runtime: python37
 entrypoint: gunicorn -b :$PORT main
 api_version: 1
-threadsafe: true
 
 runtime_config:
   python_version: 3
@@ -11,7 +10,3 @@ handlers:
   static_dir: /project/static
 - url: /.*
   script: main.app
-
-skip_files:
-- .git/
-- .logs/
