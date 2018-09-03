@@ -7,13 +7,14 @@ import os
 
 import project
 from project.config import Config
+import project.util as util
+from project.util import Env
 
 _PORT = int(os.environ.get('PORT', 5000))
 
-
 def init_logging(default_level=logging.INFO):
     """Loads the logging config if present or uses default settings."""
-    if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine/'):
+    if util.get_env() == Env.PROD:
         # App is running in production environment.
         config_path = 'logging_prod.json'
     else:
